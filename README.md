@@ -42,7 +42,7 @@ The MCP host (like Cursor) comes with a built-in MCP client. Playwright-mcp acts
 3. Prepare your MCP server configuration:
 
 ```json
-"oxylabs_headless_browser": {
+"oxylabs_agent_browser": {
     "command": "npx",
     "args": [
         "@playwright/mcp@latest",
