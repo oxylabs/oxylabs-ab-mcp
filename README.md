@@ -1,21 +1,21 @@
-# oxylabs-headless-browser-mcp
+# oxylabs-agent-browser-mcp
 
-## Oxylabs Headless Browser
+## Oxylabs Agent Browser
 
-Headless Browser enables you to run and control remote browsers without the complexity of managing them locally or on your own infrastructure. It provides a seamless way to execute browser-based automation, testing, and web scraping without dealing with browser setup, resource constraints, or detection challenges.
+Agent Browser enables you to run and control remote browsers without the complexity of managing them locally or on your own infrastructure. It provides a seamless way to execute browser-based automation, testing, and web scraping without dealing with browser setup, resource constraints, or detection challenges.
 
 For detailed information, please refer to the official Oxylabs documentation: [documentation](https://developers.oxylabs.io/scraping-solutions/headless-browser)
 
 ## Integration with MCP Server
 
-To integrate Headless Browser with MCP, you'll need:
+To integrate Agent Browser with MCP, you'll need:
 - Node.js with npx for launching playwright-mcp
 - An MCP host with MCP client (Claude Desktop or Cursor)
-- MCP server configuration with Headless Browser endpoint credentials.
+- MCP server configuration with Agent Browser endpoint credentials.
 
 ### How It Works
 
-The MCP host (like Cursor) comes with a built-in MCP client. Playwright-mcp acts as an MCP server, and instead of using a local browser, it connects to Headless Browser via a secure WebSocket connection (WSS).
+The MCP host (like Cursor) comes with a built-in MCP client. Playwright-mcp acts as an MCP server, and instead of using a local browser, it connects to Agent Browser via a secure WebSocket connection (WSS).
 
 ![MCP Architecture](resources/mcp.png)
 
@@ -23,7 +23,7 @@ The MCP host (like Cursor) comes with a built-in MCP client. Playwright-mcp acts
 
 ### Prerequisites
 
-1. Oxylabs Account: Obtain your username and password from Oxylabs for the Headless Browser product;
+1. Oxylabs Account: Obtain your username and password from Oxylabs for the Agent Browser product;
 
 2. Install Node.js (version 18 or higher) and npm (which includes npx):
    - Node.js version 18.0.0 or higher is required for Playwright MCP
