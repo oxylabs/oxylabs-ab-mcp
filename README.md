@@ -4,7 +4,7 @@
 
 Agent Browser enables you to run and control remote browsers without the complexity of managing them locally or on your own infrastructure. It provides a seamless way to execute browser-based automation, testing, and web scraping without dealing with browser setup, resource constraints, or detection challenges.
 
-For detailed information, please refer to the official Oxylabs documentation: [documentation](https://developers.oxylabs.io/scraping-solutions/headless-browser)
+For detailed information, please refer to the official Oxylabs documentation: [documentation](https://developers.oxylabs.io/products/agent-browser)
 
 ## Integration with MCP Server
 
