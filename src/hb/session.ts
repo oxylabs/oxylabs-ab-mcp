@@ -84,7 +84,7 @@ export function requireCredentials(settings: Settings): { username: string; pass
   const { username, password } = settings;
   if (!username || !password) {
     throw new Error(
-      'Oxylabs Agent Browser credentials are not configured. Set OXY_HB_USERNAME and OXY_HB_PASSWORD in the MCP server environment.',
+      'Oxylabs Agent Browser credentials are not configured. Set OXY_AB_USERNAME and OXY_AB_PASSWORD in the MCP server environment.',
     );
   }
   return { username, password };

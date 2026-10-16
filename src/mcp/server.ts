@@ -79,7 +79,7 @@ function appendText(result: CallToolResult, text: string): CallToolResult {
 /** Compose the Playwright MCP tools (proxied per HB session) with the hb_* tools into one MCP server. */
 export async function buildServer(settings: Settings, opts: BuildOptions): Promise<HbServer> {
   const log = opts.log ?? (() => undefined);
-  const redactor = new Redactor([{ name: 'OXY_HB_PASSWORD', value: settings.password, username: settings.username }]);
+  const redactor = new Redactor([{ name: 'OXY_AB_PASSWORD', value: settings.password, username: settings.username }]);
   const safeLog = (m: string) => log(redactor.text(m));
   const hub = await SessionHub.create(settings, redactor, safeLog, opts.connectOverCDP);
   const dashboard = new DashboardClient(HB_DASHBOARD_URL, () => requireCredentials(settings), redactor);

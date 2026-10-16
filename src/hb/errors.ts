@@ -43,7 +43,7 @@ export function isRetryable(e: HandshakeError): boolean {
 
 const FIXES: Array<[RegExp, string]> = [
   [/missing auth header/, 'no Authorization header reached the gateway; oxylabs-ab-mcp always sends one, so a proxy in between is stripping it'],
-  [/invalid credentials/, 'check OXY_HB_USERNAME / OXY_HB_PASSWORD (full username as shown in the dashboard, raw password)'],
+  [/invalid credentials/, 'check OXY_AB_USERNAME / OXY_AB_PASSWORD (full username as shown in the dashboard, raw password)'],
   [/keep_alive requires session_name/, 'add session_name or drop keep_alive'],
   [/session_name must be/, 'session_name is 3-36 characters of [A-Za-z0-9-]'],
   [/unsupported proxy type/, 'use proxy=resi or proxy=dc'],

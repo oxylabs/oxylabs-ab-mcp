@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import { Redactor } from '../redact.js';
 
 const password = 'sup3r+secret/pw';
-const r = new Redactor([{ name: 'OXY_HB_PASSWORD', value: password, username: 'alice' }]);
+const r = new Redactor([{ name: 'OXY_AB_PASSWORD', value: password, username: 'alice' }]);
 
 test('redacts raw, percent-encoded and base64 spellings', () => {
   const b64 = Buffer.from(`alice:${password}`).toString('base64');
@@ -15,7 +15,7 @@ test('redacts raw, percent-encoded and base64 spellings', () => {
   const out = r.text(msg);
   assert.doesNotMatch(out, /sup3r/);
   assert.doesNotMatch(out, new RegExp(b64.replace(/[+/]/g, '.')));
-  assert.match(out, /wss:\/\/alice:<secret>OXY_HB_PASSWORD<\/secret>@hb\.oxylabs\.io\/ 400 Bad Request/);
+  assert.match(out, /wss:\/\/alice:<secret>OXY_AB_PASSWORD<\/secret>@hb\.oxylabs\.io\/ 400 Bad Request/);
   assert.match(out, /keep_alive requires session_name/);
 });
 
@@ -28,7 +28,7 @@ test('result walker touches only text parts and keeps isError', () => {
     ],
   });
   assert.equal(out.isError, true);
-  assert.equal(out.content?.[0].text, 'oops <secret>OXY_HB_PASSWORD</secret>');
+  assert.equal(out.content?.[0].text, 'oops <secret>OXY_AB_PASSWORD</secret>');
   assert.equal(out.content?.[1].data, password);
 });
 

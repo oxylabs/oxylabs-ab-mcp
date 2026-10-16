@@ -32,7 +32,7 @@ function text(res: { content: Array<{ type: string; text?: string }> }): string 
 }
 
 test('composite server lists Playwright and hb tools, resources and instructions', async () => {
-  const { hb, client } = await connectedClient({ OXY_HB_USERNAME: 'u', OXY_HB_PASSWORD: 'secretpw' });
+  const { hb, client } = await connectedClient({ OXY_AB_USERNAME: 'u', OXY_AB_PASSWORD: 'secretpw' });
   try {
     const { tools } = await client.listTools();
     const names = tools.map((t) => t.name);
@@ -62,7 +62,7 @@ test('composite server lists Playwright and hb tools, resources and instructions
 });
 
 test('hb tools validate offline and never leak the password', async () => {
-  const { hb, client } = await connectedClient({ OXY_HB_USERNAME: 'u', OXY_HB_PASSWORD: 'secretpw', HB_CONNECT_ATTEMPTS: '1' });
+  const { hb, client } = await connectedClient({ OXY_AB_USERNAME: 'u', OXY_AB_PASSWORD: 'secretpw', HB_CONNECT_ATTEMPTS: '1' });
   try {
     const bad = await client.callTool({ name: 'hb_connect', arguments: { proxy: 'dc', p_cc: 'US' } });
     assert.equal(bad.isError, true);
@@ -88,7 +88,7 @@ test('hb tools validate offline and never leak the password', async () => {
     const conn = await client.callTool({ name: 'hb_connect', arguments: { p_cc: 'US' } });
     assert.equal(conn.isError, true);
     const t = text(conn as never);
-    assert.match(t, /Could not connect to the Oxylabs Agent Browser after 1 attempt\(s\): 401 Unauthorized: invalid credentials\. Fix: check OXY_HB_USERNAME/);
+    assert.match(t, /Could not connect to the Oxylabs Agent Browser after 1 attempt\(s\): 401 Unauthorized: invalid credentials\. Fix: check OXY_AB_USERNAME/);
     assert.doesNotMatch(t, /secretpw/);
 
     // A failed connect leaves no slot behind; unknown labels are rejected without connecting.
@@ -114,7 +114,7 @@ test('without credentials the server starts and explains', async () => {
   try {
     const res = await client.callTool({ name: 'hb_sessions_list', arguments: {} });
     assert.equal(res.isError, true);
-    assert.match(text(res as never), /OXY_HB_USERNAME and OXY_HB_PASSWORD/);
+    assert.match(text(res as never), /OXY_AB_USERNAME and OXY_AB_PASSWORD/);
   } finally {
     await hb.shutdown();
   }

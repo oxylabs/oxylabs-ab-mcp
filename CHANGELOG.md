@@ -42,7 +42,7 @@ Initial release.
 - `hb_sessions_list`, `hb_session_stop`, `hb_recordings_list`, `hb_recording_url`, `hb_recording_delete`,
   `hb_profiles_list`, `hb_profile_delete`: dashboard API wrappers.
 - `hb_reference` tool and `hb://reference/*` resources: `params`, `errors`, `challenges`.
-- Credentials from `OXY_HB_USERNAME` / `OXY_HB_PASSWORD`, sent as a Basic auth header rather than in the URL
+- Credentials from `OXY_AB_USERNAME` / `OXY_AB_PASSWORD`, sent as a Basic auth header rather than in the URL
   (`HB_AUTH_MODE=url` puts them in the URL); password redaction on every tool result and error; service
   rejections such as `page handler is not enabled for this account` are explained with the next step.
 - `prepare` script builds the package on install from a git source.

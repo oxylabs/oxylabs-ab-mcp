@@ -41,7 +41,7 @@ async function main(): Promise<void> {
     return;
   }
   if (!settings.username || !settings.password) {
-    log('warning: OXY_HB_USERNAME / OXY_HB_PASSWORD not set; tools that need the service will explain how to configure them');
+    log('warning: OXY_AB_USERNAME / OXY_AB_PASSWORD not set; tools that need the service will explain how to configure them');
   }
 
   const hb = await buildServer(settings, { referenceDir, log });

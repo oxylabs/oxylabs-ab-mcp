@@ -75,8 +75,8 @@ function loadUserConfig(file: string | undefined): Config {
 
 /** Resolve settings with precedence flag > env > default. Throws on invalid input so the CLI fails fast. */
 export function resolveSettings(env: NodeJS.ProcessEnv, flags: CliFlags = {}): Settings {
-  const username = firstEnv(env, ['OXY_HB_USERNAME']);
-  const password = firstEnv(env, ['OXY_HB_PASSWORD']);
+  const username = firstEnv(env, ['OXY_AB_USERNAME']);
+  const password = firstEnv(env, ['OXY_AB_PASSWORD']);
   const authModeRaw = (env.HB_AUTH_MODE ?? 'header').toLowerCase();
   if (authModeRaw !== 'header' && authModeRaw !== 'url') throw new Error(`HB_AUTH_MODE must be "header" or "url", got "${authModeRaw}"`);
 
@@ -122,7 +122,7 @@ export function resolveSettings(env: NodeJS.ProcessEnv, flags: CliFlags = {}): S
       ...(flags.timeoutAction !== undefined ? { action: flags.timeoutAction } : {}),
       ...(flags.timeoutNavigation !== undefined ? { navigation: flags.timeoutNavigation } : {}),
     },
-    secrets: { ...(userRest.secrets ?? {}), ...(password ? { OXY_HB_PASSWORD: password } : {}) },
+    secrets: { ...(userRest.secrets ?? {}), ...(password ? { OXY_AB_PASSWORD: password } : {}) },
   };
 
   return {

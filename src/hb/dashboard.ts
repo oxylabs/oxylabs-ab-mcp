@@ -209,7 +209,7 @@ function errorMessage(status: number, text: string): string {
     // plain text body
   }
   const hints: Record<number, string> = {
-    401: 'authentication required: check OXY_HB_USERNAME / OXY_HB_PASSWORD',
+    401: 'authentication required: check OXY_AB_USERNAME / OXY_AB_PASSWORD',
     404: 'not found (or not owned by this account)',
     409: 'locked by a live session that is saving it; wait for that session to close',
     429: 'dashboard rate limit exceeded; slow down',

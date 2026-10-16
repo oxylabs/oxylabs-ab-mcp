@@ -5,12 +5,12 @@ import assert from 'node:assert/strict';
 import { describeSettings, resolveSettings } from '../settings.js';
 
 test('defaults to prod with derived URLs and forced playwright keys', () => {
-  const s = resolveSettings({ OXY_HB_USERNAME: 'u', OXY_HB_PASSWORD: 'secretpw' });
+  const s = resolveSettings({ OXY_AB_USERNAME: 'u', OXY_AB_PASSWORD: 'secretpw' });
   assert.equal(s.username, 'u');
   assert.equal(s.authMode, 'header');
   assert.deepEqual(s.playwright.capabilities, ['vision', 'pdf']);
   assert.equal(s.playwright.browser?.isolated, false);
-  assert.equal(s.playwright.secrets?.OXY_HB_PASSWORD, 'secretpw');
+  assert.equal(s.playwright.secrets?.OXY_AB_PASSWORD, 'secretpw');
   assert.equal(s.playwright.timeouts?.navigation, 60000);
   assert.equal(JSON.stringify(describeSettings(s)).includes('secretpw'), false);
 });

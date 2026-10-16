@@ -19,7 +19,7 @@ How errors reach oxylabs-ab-mcp:
 |------|-------|-----|
 | `missing auth header` | no Authorization header reached the gateway | oxylabs-ab-mcp always sends one; a proxy in between is stripping it |
 | `invalid auth header` / `not a valid base64 string` / `missing credentials` | malformed Basic token | oxylabs-ab-mcp builds it; if it persists, change a password containing `:` |
-| `invalid credentials` | unknown/inactive user, wrong password, incomplete username | check `OXY_HB_USERNAME` (full username incl. suffix) and `OXY_HB_PASSWORD` |
+| `invalid credentials` | unknown/inactive user, wrong password, incomplete username | check `OXY_AB_USERNAME` (full username incl. suffix) and `OXY_AB_PASSWORD` |
 
 ## 400 Bad Request
 

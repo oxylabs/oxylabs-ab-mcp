@@ -30,13 +30,13 @@ node dist/cli.js --check     # prints the resolved settings, password masked
 Claude Code:
 
 ```sh
-claude mcp add hb -e OXY_HB_USERNAME=<username> -e OXY_HB_PASSWORD=<password> -- npx -y oxylabs-ab-mcp
+claude mcp add hb -e OXY_AB_USERNAME=<username> -e OXY_AB_PASSWORD=<password> -- npx -y oxylabs-ab-mcp
 ```
 
 From a checkout, for every project (user scope), pointing at this build:
 
 ```sh
-make link OXY_HB_USERNAME=<username> OXY_HB_PASSWORD=<password> [HB_DEFAULT_PARAMS=p_cc=US]
+make link OXY_AB_USERNAME=<username> OXY_AB_PASSWORD=<password> [HB_DEFAULT_PARAMS=p_cc=US]
 make unlink
 ```
 
@@ -48,7 +48,7 @@ make unlink
     "hb": {
       "command": "npx",
       "args": ["-y", "oxylabs-ab-mcp", "--default-params", "p_cc=US"],
-      "env": { "OXY_HB_USERNAME": "<username>", "OXY_HB_PASSWORD": "<password>" }
+      "env": { "OXY_AB_USERNAME": "<username>", "OXY_AB_PASSWORD": "<password>" }
     }
   }
 }
@@ -66,7 +66,7 @@ Claude Desktop: open Settings, go to Developer, press Edit Config, add the confi
 Streamable HTTP instead of stdio (Inspector, local agents; one client at a time):
 
 ```sh
-OXY_HB_USERNAME=... OXY_HB_PASSWORD=... oxylabs-ab-mcp --port 8931      # serves http://127.0.0.1:8931/mcp
+OXY_AB_USERNAME=... OXY_AB_PASSWORD=... oxylabs-ab-mcp --port 8931      # serves http://127.0.0.1:8931/mcp
 npx @modelcontextprotocol/inspector node dist/cli.js   # interactive check
 ```
 
@@ -76,7 +76,7 @@ Precedence: CLI flag, then environment variable, then default.
 
 | Setting | Flag / env | Default |
 |---|---|---|
-| Credentials | `OXY_HB_USERNAME`, `OXY_HB_PASSWORD` | required for anything that touches the service |
+| Credentials | `OXY_AB_USERNAME`, `OXY_AB_PASSWORD` | required for anything that touches the service |
 | Default parameters | `--default-params`, `HB_DEFAULT_PARAMS` (query string, e.g. `p_cc=US&p_device=mobile`) | none |
 | Playwright capabilities | `--caps`, `HB_CAPS` (`vision,pdf,network,storage,testing,devtools,config`) | `vision,pdf` |
 | Output directory | `--output-dir`, `HB_OUTPUT_DIR` (screenshots, PDFs, snapshot files) | `.playwright-mcp` in the working directory |
@@ -158,7 +158,7 @@ finish with `browser_close(session="us")`.
 
 ```sh
 npm test                         # build + offline unit tests
-OXY_HB_USERNAME=... OXY_HB_PASSWORD=... npm run test:integration   # live smoke tests against the service
+OXY_AB_USERNAME=... OXY_AB_PASSWORD=... npm run test:integration   # live smoke tests against the service
 ```
 
 ## Disclaimer
