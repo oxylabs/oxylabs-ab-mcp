@@ -1,0 +1,42 @@
+{
+  "name": "oxylabs-ab-mcp",
+  "version": "0.1.0",
+  "description": "Playwright MCP server for the Oxylabs Agent Browser: every browser tool runs in a remote, managed browser session with residential proxies and geo-targeting; extra hb_* tools cover connection parameters, live view, challenge handling, recordings and profiles.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "bin": {
+    "oxylabs-ab-mcp": "dist/cli.js"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "!dist/test",
+    "reference",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepare": "npm run build",
+    "clean": "rm -rf dist",
+    "test": "npm run build && node --test \"dist/test/*.test.js\"",
+    "test:integration": "npm run build && HB_INTEGRATION=1 node --test \"dist/test/integration/*.test.js\"",
+    "check": "node dist/cli.js --check",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.26.0",
+    "@playwright/mcp": "0.0.82",
+    "commander": "^13.1.0",
+    "playwright-core": "1.64.0-alpha-1789764292000",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.0",
+    "typescript": "^5.5.0"
+  }
+}

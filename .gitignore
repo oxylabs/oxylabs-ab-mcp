@@ -1,0 +1,6 @@
+node_modules/
+dist/
+.oxylabs-ab-mcp-output/
+*.log
+.env
+.playwright-mcp/
